@@ -1,0 +1,51 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context="com.example.quimica_nilma.FullscreenActivity" >
+
+    <Button
+        android:id="@+id/buttonAddCardapio1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="58dp"
+        android:text="SEGUNDA-FEIRA" />
+
+    <Button
+        android:id="@+id/buttonAddCardapio2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/buttonAddCardapio1"
+        android:layout_marginTop="14dp"
+        android:text="TERÇA-FEIRA" />
+    <Button
+        android:id="@+id/buttonAddCardapio3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/buttonAddCardapio2"
+        android:layout_marginTop="14dp"
+        android:text="QUARTA-FEIRA" />
+    <Button
+        android:id="@+id/buttonAddCardapio4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/buttonAddCardapio3"
+        android:layout_marginTop="14dp"
+        android:text="QUINTA-FEIRA" />
+    <Button
+        android:id="@+id/buttonAddCardapio5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/buttonAddCardapio4"
+        android:layout_marginTop="14dp"
+        android:text="SEXTA-FEIRA" />
+
+
+</RelativeLayout>
