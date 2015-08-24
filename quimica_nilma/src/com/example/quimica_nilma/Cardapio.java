@@ -73,7 +73,6 @@ public class Cardapio extends Activity {
 						{
 							SendNotification();
 						}
-						
 					}
 				}
 			};
