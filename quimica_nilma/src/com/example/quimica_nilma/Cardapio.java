@@ -1,9 +1,11 @@
 package com.example.quimica_nilma;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -17,6 +19,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 public class Cardapio extends Activity {
   
 	List<CheckBox> allCheckBox;
@@ -71,7 +74,7 @@ public class Cardapio extends Activity {
 					{
 						if(allCheckBox.get(i).isChecked())
 						{
-							SendNotification();
+							Schedule(day);
 						}
 					}
 				}
@@ -87,7 +90,6 @@ public class Cardapio extends Activity {
 		CheckBox checkbox = new CheckBox(getApplicationContext());
 		checkbox.setText(""+text);
 		
-		//ARRAY PARA COBTROLAR AS CHECKBOX
 		allCheckBox.add(checkbox);
 		LinearLayout l = (LinearLayout)findViewById(R.id.cardapio);
 		l.addView(checkbox);
@@ -105,4 +107,47 @@ public class Cardapio extends Activity {
 		this.notification.setLatestEventInfo(this.ctx, "EVITE O DESPERDÍCIO", "Leve comida na "+day, contentIntent);
 		this.notificationManager.notify(0, this.notification);
 	}
+	
+	private void Schedule(String day)
+	{
+		int _day;
+		
+		switch(day)
+		{
+			case "SEGUNDA-FEIRA": 
+				_day = 1;
+				break;
+		
+			case "TERÇA-FEIRA"  :
+				_day = 2;
+				break;
+			
+			case "QUARTA-FEIRA" :
+				_day = 3;
+				break;
+				
+			case "QUINTA-FEIRA" :
+				_day = 4;
+				break;
+			
+			case "SEXTA-FEIRA"  :
+				_day = 5;
+				break;
+				
+				default: _day = 7;
+		}
+		Intent i = new Intent("EXECUTE_ALARM"); 
+		PendingIntent pi = PendingIntent.getBroadcast(Cardapio.this, 0, i, 0);
+		
+		Calendar c = Calendar.getInstance(); 
+		c.setTimeInMillis(System.currentTimeMillis());
+		c.add(Calendar.DAY_OF_WEEK, _day);
+		c.add(Calendar.HOUR, 6);
+		
+		AlarmManager alarm = (AlarmManager) getSystemService(ALARM_SERVICE); //Agenda o alarme
+		long time = c.getTimeInMillis();
+		alarm.set(AlarmManager.RTC_WAKEUP, time, pi);
+				
+		Toast.makeText(ctx, "AGENDADO PARA: "+day, Toast.LENGTH_SHORT).show();
+	}	
 }
